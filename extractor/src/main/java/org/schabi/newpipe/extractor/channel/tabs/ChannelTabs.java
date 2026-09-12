@@ -1,4 +1,4 @@
-package org.schabi.newpipe.extractor.linkhandler;
+package org.schabi.newpipe.extractor.channel.tabs;
 
 public final class ChannelTabs {
     public static final String VIDEOS = "videos";
