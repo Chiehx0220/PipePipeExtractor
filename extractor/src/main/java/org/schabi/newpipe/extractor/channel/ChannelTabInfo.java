@@ -1,4 +1,4 @@
-package org.schabi.newpipe.extractor.channel.tabs;
+package org.schabi.newpipe.extractor.channel;
 
 import org.schabi.newpipe.extractor.InfoItem;
 import org.schabi.newpipe.extractor.ListExtractor;
