@@ -497,6 +497,15 @@ public class BilibiliService extends StreamingService {
         return getBulletCommentsExtractor(getBulletCommentsLHFactory().fromUrl(url));
     }
 
+    /**
+     * Exposed for {@link org.schabi.newpipe.extractor.services.bilibili.compat.BilibiliBulletCommentsCompat},
+     * which needs to check whether this service's cid cache already has an entry for a given video
+     * before deciding whether to prime it.
+     */
+    public WatchDataCache getWatchDataCache() {
+        return watchDataCache;
+    }
+
 
     public static final int USER_VIDEO_API_MODE_WEB = 0;
     public static final int USER_VIDEO_API_MODE_SEARCH = 1;

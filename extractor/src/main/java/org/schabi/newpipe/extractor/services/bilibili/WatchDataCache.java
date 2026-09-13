@@ -25,6 +25,10 @@ public class WatchDataCache {
         return cidMap.get(id);
     }
 
+    public boolean hasCid(String id) {
+        return cidMap.containsKey(id);
+    }
+
     public void setCid(String id, long cid) {
         this.cid = cid;
         cidMap.put(id, cid);
