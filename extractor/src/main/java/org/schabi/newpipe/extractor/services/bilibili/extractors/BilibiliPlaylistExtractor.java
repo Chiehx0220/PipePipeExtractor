@@ -95,7 +95,7 @@ public class BilibiliPlaylistExtractor extends PlaylistExtractor {
         }
         final StreamInfoItemsCollector collector = new StreamInfoItemsCollector(getServiceId());
         for (int i = 0; i < results.size(); i++) {
-            collector.commit(new BilibiliChannelInfoItemWebAPIExtractor(results.getObject(i), getUploaderName(), getUploaderAvatarUrl()));
+            collector.commit(new BilibiliChannelInfoItemWebAPIExtractor(results.getObject(i), getUploaderName(), getUploaderAvatarUrl(), getUploaderUrl()));
         }
         return new InfoItemsPage<>(collector, new Page(utils.getNextPageFromCurrentUrl(page.getUrl(), type.equals("seasons_archives") ? "page_num" : "pn", 1), getDefaultCookies()));
     }

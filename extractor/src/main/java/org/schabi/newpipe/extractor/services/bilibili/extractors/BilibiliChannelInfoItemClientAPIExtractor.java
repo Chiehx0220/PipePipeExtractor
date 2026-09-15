@@ -22,11 +22,13 @@ public class BilibiliChannelInfoItemClientAPIExtractor implements StreamInfoItem
     protected final JsonObject item;
     private final String name;
     private final String face;
+    private final String uploaderUrl;
 
-    public BilibiliChannelInfoItemClientAPIExtractor(final JsonObject json, String name, String face) {
+    public BilibiliChannelInfoItemClientAPIExtractor(final JsonObject json, String name, String face, String uploaderUrl) {
         item = json;
         this.name = name;
         this.face = face;
+        this.uploaderUrl = uploaderUrl;
     }
 
     @Override
@@ -70,6 +72,14 @@ public class BilibiliChannelInfoItemClientAPIExtractor implements StreamInfoItem
     @Override
     public String getUploaderAvatarUrl() throws ParsingException {
         return face;
+    }
+
+    @Override
+    public String getUploaderUrl() throws ParsingException {
+        // This listing's own items don't carry a per-item uploader url - it's the channel we're
+        // already browsing, so it comes from the extractor that built this listing (see callers of
+        // this constructor), same as name/face above.
+        return uploaderUrl == null ? "" : uploaderUrl;
     }
 
     @SuppressWarnings("SimpleDateFormat")
