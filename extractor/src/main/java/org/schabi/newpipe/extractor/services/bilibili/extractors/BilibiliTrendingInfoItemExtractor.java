@@ -11,6 +11,7 @@ import com.grack.nanojson.JsonObject;
 
 import org.schabi.newpipe.extractor.exceptions.ParsingException;
 import org.schabi.newpipe.extractor.localization.DateWrapper;
+import org.schabi.newpipe.extractor.services.bilibili.linkHandler.BilibiliChannelLinkHandlerFactory;
 import org.schabi.newpipe.extractor.stream.StreamInfoItemExtractor;
 import org.schabi.newpipe.extractor.stream.StreamType;
 
@@ -55,6 +56,12 @@ public class BilibiliTrendingInfoItemExtractor implements StreamInfoItemExtracto
     @Override
     public String getUploaderName() throws ParsingException {
         return item.getObject("owner").getString("name");
+    }
+
+    @Override
+    public String getUploaderUrl() throws ParsingException {
+        // Same "owner.mid" shape BillibiliStreamExtractor already reads for the watch page.
+        return BilibiliChannelLinkHandlerFactory.baseUrl + item.getObject("owner").getLong("mid");
     }
 
     @Override
